@@ -28,7 +28,7 @@ jobs:
       - uses: docker/login-action@v1.8.0
         with:
           username: ryicoh
-          password: ${{ secrets.ACCESS_TOKEN }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
       - uses: docker/build-push-action@v2.2.1
         with:
