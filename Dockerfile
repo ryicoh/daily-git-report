@@ -1,7 +1,6 @@
 FROM alpine:3.12
 
-apk add -u git curl
-
-COPY ./daily-git-report /
+RUN apk add git curl
+COPY ./daily-git-report.sh /
 
 CMD ./daily-git-report.sh
