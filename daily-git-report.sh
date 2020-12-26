@@ -23,10 +23,10 @@ fi
 git clone --depth=1 $REPOSITORY_URL
 cd $REPOSITORY_NAME
 
-COMMIT_LOG=$(git shortlog --all --no-merges --author="${AUTHOR}"  --since="midnight")
+COMMIT_LOG=$(git shortlog --all --no-merges --author="${AUTHOR}"  --since="1 day ago")
 echo $COMMIT_LOG
 
-LINES=$(git log --all --numstat --pretty="%H" --author="${AUTHOR}" --since="midnight" | awk 'NF==3 {plus+=$1; minus+=$2} END {printf("+%d, -%d\n", plus, minus)}')
+LINES=$(git log --all --numstat --pretty="%H" --author="${AUTHOR}" --since="1 day ago" | awk 'NF==3 {plus+=$1; minus+=$2} END {printf("+%d, -%d\n", plus, minus)}')
 echo $LINES
 
 MESSAGE="${COMMIT_LOG} \\r\\n [insertions, deletions]: \\r\\n ${LINES}"
