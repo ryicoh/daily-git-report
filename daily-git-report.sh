@@ -34,7 +34,7 @@ echo $COMMIT_LOG
 LINES=$(git log --all --numstat --pretty="%H" --author="${AUTHOR}" --since="1 day ago" | awk 'NF==3 {plus+=$1; minus+=$2} END {printf("+%d, -%d\n", plus, minus)}')
 echo $LINES
 
-MESSAGE="${COMMIT_LOG} \\r\\n [insertions, deletions]: \\r\\n ${LINES}"
+MESSAGE="*${REPOSITORY_NAME}*\\n${COMMIT_LOG} \\r\\n [insertions, deletions]: \\r\\n ${LINES}"
 echo $MESSAGE
 
 PAYLOAD="payload={\"channel\":\"${SLACK_CHANNEL}\" , \"text\":\"${MESSAGE}\"}"
