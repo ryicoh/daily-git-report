@@ -15,12 +15,17 @@ if [[ -z $REPOSITORY_URL ]]; then
 	exit 1
 fi
 
+if [[ -z $REPOSITORY_BRANCH ]]; then
+	echo "REPOSITORY_BRANCH must not be empty"
+	exit 1
+fi
+
 if [[ -z $AUTHOR ]]; then
 	echo "AUTHOR must not be empty"
 	exit 1
 fi
 
-git clone --depth=1 $REPOSITORY_URL
+git clone -b $REPOSITORY_BRANCH --depth=1 $REPOSITORY_URL
 cd $REPOSITORY_NAME
 
 COMMIT_LOG=$(git shortlog --all --no-merges --author="${AUTHOR}"  --since="1 day ago")
